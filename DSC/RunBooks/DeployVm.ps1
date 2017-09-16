@@ -53,8 +53,6 @@ $VirtualMachineSize,
 [Parameter(Mandatory=$true)]
 $VirtualMachineSKU,
 
-[Parameter(Mandatory=$true)]
-$LandLordResourceGroupName,
 
 [Parameter(Mandatory=$true)]
 $RegistrationKey,
@@ -172,10 +170,4 @@ if(!$resourceGroup)
 New-AzureRmResourceGroupDeployment -ResourceGroupName  $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters
  
 
- <#
-#Display params
-
-$lines = ($Parameters | out-string) -split "`n"
-write-host $lines[0..2]
-write-host $lines[2..($lines.count -1)] 
-#>
+>
