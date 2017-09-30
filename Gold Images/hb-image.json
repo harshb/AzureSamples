@@ -1,0 +1,68 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/VM_IP.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string"
+    },
+    "vmSize": {
+      "type": "string",
+      "defaultValue": "Basic_A1"
+    },
+    "adminUserName": {
+      "type": "string"
+    },
+    "adminPassword": {
+      "type": "securestring"
+    },
+    "networkInterfaceId": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-03-30",
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "[parameters('vmSize')]"
+        },
+        "storageProfile": {
+          "osDisk": {
+            "osType": "Windows",
+            "name": "win-web-app-osDisk.805848f6-b277-4682-88a0-aae332aa78f8.vhd",
+            "createOption": "FromImage",
+            "image": {
+              "uri": "https://hbbaseimagestorage.blob.core.windows.net/system/Microsoft.Compute/Images/vm-images/win-web-app-osDisk.805848f6-b277-4682-88a0-aae332aa78f8.vhd"
+            },
+            "vhd": {
+              "uri": "https://hbbaseimagestorage.blob.core.windows.net/vmcontainer5a21796e-611c-48df-af79-48eb16d59943/osDisk.5a21796e-611c-48df-af79-48eb16d59943.vhd"
+            },
+            "caching": "ReadWrite"
+          }
+        },
+        "osProfile": {
+          "computerName": "[parameters('vmName')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]"
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[parameters('networkInterfaceId')]"
+            }
+          ]
+        },
+        "diagnosticsProfile": {
+          "bootDiagnostics": {
+            "enabled": true,
+            "storageUri": "https://hbbaseimagestorage.blob.core.windows.net/"
+          }
+        },
+        "provisioningState": 0
+      },
+      "type": "Microsoft.Compute/virtualMachines",
+      "location": "eastus",
+      "name": "[parameters('vmName')]"
+    }
+  ]
+}

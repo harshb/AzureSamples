@@ -1,4 +1,4 @@
-# DSC with Infrastructure-As-Code,  and  Azure Automation is a winning combination
+# DSC with Infrastructure-As-Code and  Azure Automation is a winning combination
 
 **Author: Hersh Bhasin**
 
