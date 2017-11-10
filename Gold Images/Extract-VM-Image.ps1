@@ -1,11 +1,12 @@
 ﻿
-$resourceGroup = "rg-hb-image"
+$resourceGroup = "rg-images"
 $vmName = "win-base"
 
 ###################################################
 #Login
 ###################################################
 
+#Import-AzureRmContext -Path "c:\temp\azureprofile.json"
 Login-AzureRmAccount
 
 ###################################################

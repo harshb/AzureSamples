@@ -7,7 +7,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Basic_A1"
+      "defaultValue": "Standard_B1s"
     },
     "adminUserName": {
       "type": "string"
@@ -29,13 +29,13 @@
         "storageProfile": {
           "osDisk": {
             "osType": "Windows",
-            "name": "win-web-app-osDisk.805848f6-b277-4682-88a0-aae332aa78f8.vhd",
+            "name": "win-web-app-osDisk.fd1c068f-cc3e-4268-8160-36d075624d66.vhd",
             "createOption": "FromImage",
             "image": {
-              "uri": "https://hbbaseimagestorage.blob.core.windows.net/system/Microsoft.Compute/Images/vm-images/win-web-app-osDisk.805848f6-b277-4682-88a0-aae332aa78f8.vhd"
+              "uri": "https://rgtempdisks386.blob.core.windows.net/system/Microsoft.Compute/Images/vm-images/win-web-app-osDisk.fd1c068f-cc3e-4268-8160-36d075624d66.vhd"
             },
             "vhd": {
-              "uri": "https://hbbaseimagestorage.blob.core.windows.net/vmcontainer5a21796e-611c-48df-af79-48eb16d59943/osDisk.5a21796e-611c-48df-af79-48eb16d59943.vhd"
+              "uri": "https://rgtempdisks386.blob.core.windows.net/vmcontainer345f28b8-efe1-4494-b9f8-de08a396bf84/osDisk.345f28b8-efe1-4494-b9f8-de08a396bf84.vhd"
             },
             "caching": "ReadWrite"
           }
@@ -55,7 +55,7 @@
         "diagnosticsProfile": {
           "bootDiagnostics": {
             "enabled": true,
-            "storageUri": "https://hbbaseimagestorage.blob.core.windows.net/"
+            "storageUri": "https://rghbutildiag836.blob.core.windows.net/"
           }
         },
         "provisioningState": 0

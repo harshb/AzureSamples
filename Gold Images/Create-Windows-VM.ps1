@@ -1,4 +1,4 @@
-$resourceGroup = "rg-hb-image"
+$resourceGroup = "rg-images"
 $location = "EastUS"
 $storageAccountName = "hbbaseimagestorage"
 $vnetName = "iaas-net"
