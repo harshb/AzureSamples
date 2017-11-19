@@ -67,20 +67,91 @@ Remember if using Oracle Virtual Box, disable Hyper V else you don't see 64 bit 
    * Click on tab Adapter 2
    * Check Enable Network Adaptor & in Attached To droplist, select  "Host-only adapter"
 5. Go to Storage tab in settings:
-   * Select the disk icon labelled "Empty" (Under Controller: IDE). Then navigate to the Ubuntu iso you downloaded  
+   * Select the disk icon labelled "Empty" (Under Controller: IDE). Then navigate to the Ubuntu iso sudyou downloaded  
 6. Click Start on Toolbar
+7. Select options to install: OpenSSH Server and Ubuntu Gnome Desktop
+
+
+### To set up GUI
+
+```bash
+#Select Ubuntu GNOME desktop (space to select)
+sudo tasksel
+
+```
+
+Set up Guest Additions
+
+From Devices/ Insert Guest Additions  CD Image. If this does not work, then
+
+Devices/Optical Images/Choose Desk Image/Browse to Program Files/Oracle/VirtualBox/select VBoxGuestAdditions.iso
+
+```bash
+
+#for shared folders, give rights to user
+sudo adduser <yourUsername> vboxsf
+```
 
 
 
+### Set up other software
 
-# Set up ssh into Ubuntu
+```bash
+#w3m : for browing from terminal
+ sudo apt-get install w3m w3m-img
+ 
+#dot net core:https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x
+
+#set trusted
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+
+#for Ubuntu 16.04
+
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+
+sudo apt-get update
+
+#install core
+sudo apt-get install dotnet-sdk-2.0.0
+```
+
+### Turn off screen lock
+
+```bash
+gsettings set org.gnome.desktop.session idle-delay 0 (0 to disable)
+
+To disable the screen lock:
+
+gsettings set org.gnome.desktop.screensaver lock-enabled false
+```
+
+
+
+# #Set up ssh into Ubuntu
 
 Virtual Box terminal is lame. You might want to use putty. To enable port forwarding to the vm, follow this link
 
  http://blog.johannesmp.com/2017/01/25/port-forwarding-ssh-from-virtualbox/
 
+1. Select Settings/ Network/Adapter1
+
+2. Port Forwarding
+
+3.  Set Name, Protocol Host IP, Host Port, Guest IP, Guest Port to
+
+    ssh,TCP, 127.0.0.1, 2222, 10.0.2.15, 22
+
+**Putty & WinSCP**
+
+IP Address: 127.0.0.1
+
+Port 2222
+
+
 
 # Installing Docker
+
 Follow link:
 
  https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce-1
@@ -112,17 +183,6 @@ sudo gpasswd -a hersh docker
 
 #check if added
 
-```
-
-### Configure docker to listen on a network ???
-
-```bash
-#
-netstat -tlp
-#stop
-service docker stop
-#start docker listning on ip
-docker run  -H 172.17.0.1:2375 -D &
 ```
 
 # Unix Commands
