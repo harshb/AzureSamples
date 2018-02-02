@@ -47,9 +47,9 @@ This is the recipe for the Docker image that we'll create shortly. In a nutshell
 
 ```bash
 #Build
-docker build -t gcr.io/fresh-shell-185922/hello-dotnet:v1 .
+docker build -t gcr.io/hersh-project/hello-dotnet:v1 .
 #Run
-docker run -d -p 8081:80 -t gcr.io/fresh-shell-185922/hello-dotnet:v1
+docker run -d -p 8081:80 -t gcr.io/hersh-project/hello-dotnet:v1
 #check
 docker ps -a
 
@@ -97,16 +97,22 @@ gcloud components install kubectl
 Login
 
 ```bash
-gcloud container clusters get-credentials cluster-1 --zone us-central1-a
+gcloud container clusters get-credentials cluster-1 --zone us-central1-a --project hersh-project
 ```
 
 ### Push image to Google Container Registry
+
+https://cloud.google.com/container-registry/docs/quickstart
 
 Now, let’s push our image to Google Container Registry using `gcloud`, so we can later refer to this image when we deploy and run our Kubernetes cluster. In the Google Cloud SDK Shell, type:
 
 ```bash
 #Push
-gcloud docker -- push gcr.io/fresh-shell-185922/hello-dotnet:v1
+gcloud docker -- push gcr.io/hersh-project/hello-dotnet:v1
+
+#check locally
+docker rmi image id
+docker run -p 8081:80 gcr.io/hersh-project/hello-dotnet:v1
 ```
 
 
@@ -114,7 +120,8 @@ gcloud docker -- push gcr.io/fresh-shell-185922/hello-dotnet:v1
 ###Create a cluster
 
 ```bash
-gcloud container clusters create hello-dotnet-cluster --num-nodes 2 --machine-type n1-standard-1
+ 
+gcloud container clusters create hb-cluster --num-nodes 2 --machine-type n1-standard-1 
 ```
 
 
@@ -123,15 +130,15 @@ gcloud container clusters create hello-dotnet-cluster --num-nodes 2 --machine-ty
 
 ```bash
 #Run
-kubectl run hello-dotnet --image=gcr.io/fresh-shell-185922hello-dotnet:v1 \
-  --port=8080
+kubectl run hello-dotnet --image=gcr.io/hersh-project/hello-dotnet:v1 --port=8080
+  
   
 #Check
  kubectl get deployments
  
 #expose our deployment to the outside world:
 kubectl expose deployment hello-dotnet --type="LoadBalancer"
-service "hello-dotnet" exposed
+
 
 #Check and sisplay external-ip
 kubectl get services 
@@ -144,6 +151,21 @@ https://35.188.10.3:8080/
 Stop the cluster
 
 ```bash
-gcloud container clusters resize cluster-1 --size=0
+gcloud container clusters resize cluster-1 --size=0  --zone us-central1-a --project hersh-project
+```
+
+```bash
+gcloud container clusters resize cluster-1 --size=2  --zone us-central1-a --project hersh-project
+```
+
+
+
+# To get at dashboard
+
+```bash
+kubectl proxy
+
+http://localhost:8001/ui
+
 ```
 
