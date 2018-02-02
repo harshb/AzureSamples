@@ -77,13 +77,13 @@ Select-AzureRmSubscription -SubscriptionName "Provider Solutions Development"
 $Location = "eastus2";
 
 
-$ProjectName ="abctest";
+$ProjectName ="omstest";
 
-$ResourceGroupName ="rg-test-sqlserver";
+$ResourceGroupName ="rg-test-oms";
 
 $AdminUsername="abcadmin";
 
-$AdminPassword="!race2Win!"
+$AdminPassword="!Race2Win!"
 
 
 $NumberOfInstances =1
@@ -105,6 +105,10 @@ $VirtualNetworkResourceGroup="its-core-networking"
 $VirtualNetworkSubnetName ="SSRS"
 
 $virtualNetworkName ="its-core-vnet"
+
+$WorkspaceId = "d15cc976-02c0-4c93-bbe6-95ecd5b0b308"
+
+$WorkspaceKey = "Av7Ya4DMwf1A7tYZEBIYe2ns94jugHsFPYtrdWsi1e6Pz53z9azR5qiGxRKNq/8vMaVAssN71wyrH2GXIZZsvQ=="
 
 
 
@@ -133,7 +137,8 @@ $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
      "virtualNetworkResourceGroup"=$VirtualNetworkResourceGroup;
      "virtualNetworkSubnetName" = $VirtualNetworkSubnetName;
      "virtualNetworkName" = $VirtualNetworkName;
-
+     "workspaceId" = $WorkspaceId;
+     "workspaceKey" = $WorkspaceKey;
  }
 
 ##################################################################################
