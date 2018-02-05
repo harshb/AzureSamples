@@ -43,7 +43,7 @@
             Message = "Finished running the file resource with ID Install_FireEye"
             DependsOn = "[Package]Install_FireEye" # This means run "Install_FireEye" first.
         }
-        <#
+        
         Package Install_McAfee
         {
             Ensure = "Present"
@@ -60,7 +60,23 @@
             Message = "Finished running the file resource with ID Install_McAfee"
             DependsOn = "[Package]Install_McAfee" # This means run "Install_McAfee" first.
         }
-        #>
+        
+        Package Install_ILMT
+        {
+            Ensure = "Present"
+            Name = "ILMT-TAD4D Agent"
+            DependsOn = "[File]DirectoryCopy"
+            Path = "C:\Packages\ILMT\setup.exe"
+            Arguments = '/z"/sfc:\Packages\ILMT\response_file.txt /noprecheck" /L1033 /s /f2"c:\windows\temp\ILMT.log"'
+            ProductId = "C18D2775-33F4-4CE9-B071-4ECC78DA5E33"
+        }
+
+        Log AfterInstall_ILMT
+        {
+            # The message below gets written to the Microsoft-Windows-Desired State Configuration/Analytic log
+            Message = "Finished running the file resource with ID Install_ILMT"
+            DependsOn = "[Package]Install_ILMT" # This means run "Install_ILMT" first.
+        }
         
         Registry DisableIPv6
         {

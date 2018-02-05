@@ -47,7 +47,13 @@ $VirtualNetworkResourceGroup,
 $VirtualNetworkSubnetName,
 
 [Parameter(Mandatory=$true)]
-$virtualNetworkName
+$virtualNetworkName,
+
+[Parameter(Mandatory=$true)]
+$WorkspaceId,
+
+[Parameter(Mandatory=$true)]
+$WorkspaceKey
 
 )
 
@@ -82,6 +88,9 @@ $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
      "virtualNetworkResourceGroup"=$VirtualNetworkResourceGroup;
      "virtualNetworkSubnetName" = $VirtualNetworkSubnetName;
      "virtualNetworkName" = $VirtualNetworkName;
+
+     "workspaceId" = $WorkspaceId;
+     "workspaceKey" = $WorkspaceKey;
 
  }
 ##################################################################################

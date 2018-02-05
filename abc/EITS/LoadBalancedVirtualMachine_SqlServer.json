@@ -669,88 +669,87 @@
             }
           }
         }
-        //-------DSC Extension--------------
-        //,
-        //{
-        //  "type": "Microsoft.Compute/virtualMachines/extensions",
-        //  "name": "[concat(variables('vmNamePrefix'),copyindex(),'/Microsoft.Powershell.DSC')]",
-        //  "apiVersion": "2015-06-15",
-        //  "location": "[resourceGroup().location]",
-        //  "dependsOn": [
-        //    "[resourceId('Microsoft.Compute/virtualMachines/', concat(variables('vmNamePrefix'), copyindex()))]"
-        //  ],
-        //  "properties": {
-        //    "publisher": "Microsoft.Powershell",
-        //    "type": "DSC",
-        //    "typeHandlerVersion": "2.19",
-        //    "autoUpgradeMinorVersion": true,
-        //    "protectedSettings": {
-        //      "Items": {
-        //        "registrationKeyPrivate": "[parameters('registrationKey')]"
-        //      }
-        //    },
-        //    "settings": {
-        //      "modulesUrl": "[variables('modulesUrl')]",
-        //      "SasToken": "",
-        //      "configurationFunction": "[variables('configurationFunction')]",
-        //      "Properties": [
-        //        {
-        //          "Name": "RegistrationKey",
-        //          "Value": {
-        //            "UserName": "PLACEHOLDER_DONOTUSE",
-        //            "Password": "PrivateSettingsRef:registrationKeyPrivate"
-        //          },
-        //          "TypeName": "System.Management.Automation.PSCredential"
-        //        },
-        //        {
-        //          "Name": "RegistrationUrl",
-        //          "Value": "[parameters('registrationUrl')]",
-        //          "TypeName": "System.String"
-        //        },
-        //        {
-        //          "Name": "NodeConfigurationName",
-        //          "Value": "[parameters('nodeConfigurationName')]",
-        //          "TypeName": "System.String"
-        //        },
-        //        {
-        //          "Name": "ConfigurationMode",
-        //          "Value": "[variables('configurationMode')]",
-        //          "TypeName": "System.String"
-        //        },
-        //        {
-        //          "Name": "ConfigurationModeFrequencyMins",
-        //          "Value": "[variables('configurationModeFrequencyMins')]",
-        //          "TypeName": "System.Int32"
-        //        },
-        //        {
-        //          "Name": "RefreshFrequencyMins",
-        //          "Value": "[variables('refreshFrequencyMins')]",
-        //          "TypeName": "System.Int32"
-        //        },
-        //        {
-        //          "Name": "RebootNodeIfNeeded",
-        //          "Value": "[variables('rebootNodeIfNeeded')]",
-        //          "TypeName": "System.Boolean"
-        //        },
-        //        {
-        //          "Name": "ActionAfterReboot",
-        //          "Value": "[variables('actionAfterReboot')]",
-        //          "TypeName": "System.String"
-        //        },
-        //        {
-        //          "Name": "AllowModuleOverwrite",
-        //          "Value": "[variables('allowModuleOverwrite')]",
-        //          "TypeName": "System.Boolean"
-        //        },
-        //        {
-        //          "Name": "Timestamp",
-        //          "Value": "[parameters('timestamp')]",
-        //          "TypeName": "System.String"
-        //        }
-        //      ]
-        //    }
-        //  }
-        //}
+        ,
+        {
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "name": "[concat(variables('vmNamePrefix'),copyindex(),'/Microsoft.Powershell.DSC')]",
+          "apiVersion": "2015-06-15",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Compute/virtualMachines/', concat(variables('vmNamePrefix'), copyindex()))]"
+          ],
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.19",
+            "autoUpgradeMinorVersion": true,
+            "protectedSettings": {
+              "Items": {
+                "registrationKeyPrivate": "[parameters('registrationKey')]"
+              }
+            },
+            "settings": {
+              "modulesUrl": "[variables('modulesUrl')]",
+              "SasToken": "",
+              "configurationFunction": "[variables('configurationFunction')]",
+              "Properties": [
+                {
+                  "Name": "RegistrationKey",
+                  "Value": {
+                    "UserName": "PLACEHOLDER_DONOTUSE",
+                    "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                  },
+                  "TypeName": "System.Management.Automation.PSCredential"
+                },
+                {
+                  "Name": "RegistrationUrl",
+                  "Value": "[parameters('registrationUrl')]",
+                  "TypeName": "System.String"
+                },
+                {
+                  "Name": "NodeConfigurationName",
+                  "Value": "[parameters('nodeConfigurationName')]",
+                  "TypeName": "System.String"
+                },
+                {
+                  "Name": "ConfigurationMode",
+                  "Value": "[variables('configurationMode')]",
+                  "TypeName": "System.String"
+                },
+                {
+                  "Name": "ConfigurationModeFrequencyMins",
+                  "Value": "[variables('configurationModeFrequencyMins')]",
+                  "TypeName": "System.Int32"
+                },
+                {
+                  "Name": "RefreshFrequencyMins",
+                  "Value": "[variables('refreshFrequencyMins')]",
+                  "TypeName": "System.Int32"
+                },
+                {
+                  "Name": "RebootNodeIfNeeded",
+                  "Value": "[variables('rebootNodeIfNeeded')]",
+                  "TypeName": "System.Boolean"
+                },
+                {
+                  "Name": "ActionAfterReboot",
+                  "Value": "[variables('actionAfterReboot')]",
+                  "TypeName": "System.String"
+                },
+                {
+                  "Name": "AllowModuleOverwrite",
+                  "Value": "[variables('allowModuleOverwrite')]",
+                  "TypeName": "System.Boolean"
+                },
+                {
+                  "Name": "Timestamp",
+                  "Value": "[parameters('timestamp')]",
+                  "TypeName": "System.String"
+                }
+              ]
+            }
+          }
+        }
       ]
     }
 
