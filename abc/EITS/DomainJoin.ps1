@@ -1,5 +1,5 @@
 ﻿$VmName ="abcVM0"
-$ResourceGroupName = "rg-test-vm"
+$ResourceGroupName = "rg-test-vm1"
 $Location ="eastus2" 
 $DomainName ="abc.amerisourcebergen.com"
 $DomainJoinAdminName ="abc\prd_sps_auto_job"
