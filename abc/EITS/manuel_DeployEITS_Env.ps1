@@ -77,9 +77,9 @@ Select-AzureRmSubscription -SubscriptionName "Provider Solutions Development"
 $Location = "eastus2";
 
 
-$ProjectName ="omstest";
+$ProjectName ="ad";
 
-$ResourceGroupName ="rg-test-oms";
+$ResourceGroupName ="rg-test-ad2";
 
 $AdminUsername="abcadmin";
 
@@ -110,8 +110,11 @@ $WorkspaceId = "d15cc976-02c0-4c93-bbe6-95ecd5b0b308"
 
 $WorkspaceKey = "Av7Ya4DMwf1A7tYZEBIYe2ns94jugHsFPYtrdWsi1e6Pz53z9azR5qiGxRKNq/8vMaVAssN71wyrH2GXIZZsvQ=="
 
+$DomainToJoin = "abc.amerisourcebergen.com"
 
+$DomainUsername = "abc\prd_sps_auto_job"
 
+$DomainPassword = "KxE5y3odbN3Dd3*"
 
 ##################################################################################
 # local Variables
@@ -139,6 +142,9 @@ $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
      "virtualNetworkName" = $VirtualNetworkName;
      "workspaceId" = $WorkspaceId;
      "workspaceKey" = $WorkspaceKey;
+     "domainToJoin" = $DomainToJoin;
+     "domainUsername" = $DomainUsername;
+     "domainPassword" = $DomainPassword;
  }
 
 ##################################################################################
