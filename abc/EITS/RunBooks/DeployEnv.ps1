@@ -53,7 +53,17 @@ $virtualNetworkName,
 $WorkspaceId,
 
 [Parameter(Mandatory=$true)]
-$WorkspaceKey
+$WorkspaceKey,
+
+[Parameter(Mandatory=$true)]
+$DomainToJoin,
+
+[Parameter(Mandatory=$true)]
+$DomainUsername,
+
+[Parameter(Mandatory=$true)]
+$DomainPassword
+
 
 )
 
@@ -91,6 +101,10 @@ $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
 
      "workspaceId" = $WorkspaceId;
      "workspaceKey" = $WorkspaceKey;
+
+     "domainToJoin" = $DomainToJoin;
+     "domainUsername" = $DomainUsername;
+     "domainPassword" = $DomainPassword;
 
  }
 ##################################################################################

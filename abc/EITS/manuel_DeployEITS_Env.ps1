@@ -86,7 +86,7 @@ $AdminUsername="abcadmin";
 $AdminPassword="!Race2Win!"
 
 
-$NumberOfInstances =1
+$NumberOfInstances = 1
 
 
 $RegistrationKey ="";
