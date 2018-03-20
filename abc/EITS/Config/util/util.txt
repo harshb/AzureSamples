@@ -1,4 +1,0 @@
-SC STOP  ccmsetup
-SC DELETE  ccmsetup
-
-Update-DscConfiguration
