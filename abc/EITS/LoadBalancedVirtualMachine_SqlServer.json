@@ -669,30 +669,30 @@
         },
 
 
-        {
-          "apiVersion": "2015-06-15",
-          "type": "Microsoft.Compute/virtualMachines/extensions",
-          "name": "[concat(variables('vmNamePrefix'),copyindex(),'/joindomain')]",
-          "location": "[resourceGroup().location]",
-          "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines/', concat(variables('vmNamePrefix'), copyindex()))]"
-          ],
-          "properties": {
-            "publisher": "Microsoft.Compute",
-            "type": "JsonADDomainExtension",
-            "typeHandlerVersion": "1.0",
-            "settings": {
-              "Name": "[parameters('domainToJoin')]",
-              "User": "[parameters('domainUsername')]",
-              "Restart": "true",
-              "Options": "3",
-              "OUPath": "[variables('ouPath')]"
-            },
-            "protectedsettings": {
-              "Password": "[parameters('domainPassword')]"
-            }
-          }
-        },
+        //{
+        //  "apiVersion": "2015-06-15",
+        //  "type": "Microsoft.Compute/virtualMachines/extensions",
+        //  "name": "[concat(variables('vmNamePrefix'),copyindex(),'/joindomain')]",
+        //  "location": "[resourceGroup().location]",
+        //  "dependsOn": [
+        //    "[resourceId('Microsoft.Compute/virtualMachines/', concat(variables('vmNamePrefix'), copyindex()))]"
+        //  ],
+        //  "properties": {
+        //    "publisher": "Microsoft.Compute",
+        //    "type": "JsonADDomainExtension",
+        //    "typeHandlerVersion": "1.0",
+        //    "settings": {
+        //      "Name": "[parameters('domainToJoin')]",
+        //      "User": "[parameters('domainUsername')]",
+        //      "Restart": "true",
+        //      "Options": "3",
+        //      "OUPath": "[variables('ouPath')]"
+        //    },
+        //    "protectedsettings": {
+        //      "Password": "[parameters('domainPassword')]"
+        //    }
+        //  }
+        //},
         {
           "type": "extensions",
           "name": "OMSExtension",

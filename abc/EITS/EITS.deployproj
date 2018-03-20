@@ -28,8 +28,7 @@
     <None Include="Deployment.targets">
       <Visible>False</Visible>
     </None>
-    <None Include="LoadBalancedVirtualMachine_SqlServer.json" />
-    <None Include="template.json" />
+    <None Include="LoadBalancedVirtualMachine_SqlServer_Private.json" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>

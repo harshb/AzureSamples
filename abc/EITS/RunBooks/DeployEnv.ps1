@@ -124,3 +124,16 @@ if(!$resourceGroup)
 New-AzureRmResourceGroupDeployment -ResourceGroupName  $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters
  
 
+
+##################################################################################
+# Add SQLIaasExtension Extension: for allowing SQL Server to be mgd from Azure
+##################################################################################
+
+for($i=1; $i -le $NumberOfInstances; $i++)
+{
+    
+    $VmName = $ProjectName + "VM" + ($i-1)
+
+    Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VmName -Name "SQLIaasExtension" -Version "1.2" -Location $Location
+}
+

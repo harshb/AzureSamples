@@ -1,12 +1,13 @@
-﻿$VmName ="abcVM0"
-$ResourceGroupName = "rg-test-vm1"
+﻿$VmName ="xyzVM0"
+$ResourceGroupName = "rg-test-vm"
 $Location ="eastus2" 
 $DomainName ="abc.amerisourcebergen.com"
 $DomainJoinAdminName ="abc\prd_sps_auto_job"
-$DomainJoinPassword ="KxE5y3odbN3Dd3*"
+$DomainJoinPassword ="aQo@Bit+\Vu4H,S"
 $OU = "OU=SPSServers,OU=Production,OU=ABCServers,DC=abc,DC=amerisourcebergen,DC=com"
 
 #Login-AzureRmAccount
+#Save-AzureRmContext -Profile (Add-AzureRmAccount) -Path "c:\temp\azureprofile.json"
 Import-AzureRmContext -Path "c:\temp\azureprofile.json"
 Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "Provider Solutions Development"

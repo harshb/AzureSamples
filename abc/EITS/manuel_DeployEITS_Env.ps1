@@ -79,7 +79,7 @@ $Location = "eastus2";
 
 $ProjectName ="ad";
 
-$ResourceGroupName ="rg-test-ad2";
+$ResourceGroupName ="rg-test-vm2";
 
 $AdminUsername="abcadmin";
 
@@ -114,7 +114,7 @@ $DomainToJoin = "abc.amerisourcebergen.com"
 
 $DomainUsername = "abc\prd_sps_auto_job"
 
-$DomainPassword = "KxE5y3odbN3Dd3*"
+$DomainPassword = "aQo@Bit+\Vu4H,S"
 
 ##################################################################################
 # local Variables
@@ -163,6 +163,6 @@ if(!$resourceGroup)
 
 #New-AzureRmResourceGroupDeployment -ResourceGroupName  $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters
  
- $TemplateFile = "LoadBalancedVirtualMachine_SqlServer.json"
+ $TemplateFile = "LoadBalancedVirtualMachine_SqlServer_private.json"
 
  New-AzureRmResourceGroupDeployment -ResourceGroupName  $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters
