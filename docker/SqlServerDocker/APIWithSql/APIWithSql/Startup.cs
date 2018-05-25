@@ -31,9 +31,25 @@ namespace APIWithSql
             //[Services is analogous to Containers]
 
             //var connection = @"Server=db;Database=FabsEvals;User=sa;Password=PassW0rd;";
+            //SQL Server
             var connection = Configuration["ConnectionString"];
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+            
             services.AddScoped<iSpeakerEvalsRepository, SpeakerEvalsRepository>();
+
+            //Swagger
+            services.AddSwaggerGen(options =>
+            {
+                options.DescribeAllEnumsAsStrings();
+                options.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info
+                {
+                    Title = "APIWithSqlServer - Catalog HTTP API",
+                    Version = "v1",
+                    Description = "The  Microservice HTTP API. This is a Data-Driven/CRUD microservice sample",
+                    TermsOfService = "Terms Of Service"
+                });
+            });
+
 
             services.AddMvc();
         }
@@ -51,6 +67,16 @@ namespace APIWithSql
 
             //uses to seed the SQLCore Database in the Docker Container
             evalDataContext.EnsureSeedDataForContext();
+
+
+            //swagger
+            app.UseSwagger()
+           .UseSwaggerUI(c =>
+           {
+               c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+           });
+
+
             app.UseMvc();
         }
     }

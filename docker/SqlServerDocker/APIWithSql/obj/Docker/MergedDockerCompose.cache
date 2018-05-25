@@ -1,7 +1,7 @@
 services:
   apiwithsql:
     build:
-      context: D:\PrototypeCode\AzureSamples\Containers\docker\SqlServerDocker\APIWithSql
+      context: D:\ClientCode\AzureSamples\docker\SqlServerDocker\APIWithSql
       dockerfile: APIWithSql/Dockerfile
     depends_on:
     - db
