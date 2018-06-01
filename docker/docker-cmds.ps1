@@ -16,6 +16,7 @@ Docker Info
 #delete all containers
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
+
 docker ps -a
 
 #delete all images
@@ -228,6 +229,14 @@ docker ps
 #docker-compose  -f "D:\docker\hb\hellodockertools\docker-compose.yml" -f "D:\docker\hb\hellodockertools\docker-compose.override.yml" -f "D:\docker\hb\hellodockertools\obj\Docker\docker-compose.vs.debug.g.yml" -p dockercompose15010737430134370792 --no-ansi up -d --no-build --force-recreate --remove-orphans
 
 docker-compose up -d
+
+#rebuild
+docker-compose up --build
+
+#rebuilding specific containers
+
+
+docker-compose build --no-cache sql.data 
 
  
 
