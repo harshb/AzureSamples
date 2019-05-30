@@ -25,6 +25,7 @@
     <Script Include="2-RegisterAssemblies.usql" />
     <Script Include="logs.usql" />
     <Script Include="qos.usql" />
+    <Script Include="sp.usql" />
     <ScriptCode Include="1-CreateDB.usql.cs" />
     <ScriptCode Include="2-RegisterAssemblies.usql.cs">
       <DependentUpon>2-RegisterAssemblies.usql</DependentUpon>
@@ -34,6 +35,9 @@
     </ScriptCode>
     <ScriptCode Include="qos.usql.cs">
       <DependentUpon>qos.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="sp.usql.cs">
+      <DependentUpon>sp.usql</DependentUpon>
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>

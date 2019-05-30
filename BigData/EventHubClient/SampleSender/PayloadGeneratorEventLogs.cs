@@ -17,7 +17,13 @@ namespace SampleSender
         List<string> _projects = new List<string>() { "Newton", "Nelson Mandala", "Scott Miller", "Richardson" };
         List<string> _tenants = new List<string>() { "Disney", "Multi Vision", "ABC Integrators", "Sound Labs" };
 
-        private static DateTime timestamp = DateTime.Now;
+        private DateTime timestamp;
+        public PayloadGeneratorEventLogs()
+        {
+            string iDate = "01/12/2018";
+            timestamp = Convert.ToDateTime(iDate);
+           
+        }
         public static int GetRandomNumber()
         {
             lock (Getrandom) // synchronize

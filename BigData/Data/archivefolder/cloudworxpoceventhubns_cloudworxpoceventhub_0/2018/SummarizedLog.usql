@@ -1,20 +1,18 @@
 ﻿
-
 REFERENCE ASSEMBLY [Newtonsoft.Json];
 REFERENCE ASSEMBLY [log4net];
 REFERENCE ASSEMBLY [Avro]; 
 REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
 
-//{Namespace}_{EventHub}_{PartitionId}/{Year}/{Month}/{Day}_{Hour}_{Minute}_{Second}
-//namespace/year/month/timestamp.avro
 
-DECLARE @input_file string = @"\archivefolder\{*}\{*}\{*}\{*}.avro";
-DECLARE @output_file string = @"/output/devicelogs.csv";
+
+//DECLARE @input_file string = @"\archivefolder\{*}\{*}\{*}\{*}.avro";
+//DECLARE @output_file string = @"/output/devicelogs.csv";
 
 
 @rs =
      EXTRACT Body byte[]
-    FROM @input_file
+    FROM @log_file
   
   USING new Microsoft.Analytics.Samples.Formats.ApacheAvro.AvroExtractor(@"
         {
@@ -47,6 +45,5 @@ DECLARE @output_file string = @"/output/devicelogs.csv";
 
 
 OUTPUT @logs
-TO @output_file
+TO @summary_file
 USING Outputters.Text();
-

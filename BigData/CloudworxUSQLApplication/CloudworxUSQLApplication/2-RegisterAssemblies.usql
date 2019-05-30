@@ -1,5 +1,6 @@
-﻿//run in master and avro dbs
+﻿//run this script
 USE DATABASE Avro;
+
 
 DROP ASSEMBLY IF EXISTS [Avro];
 CREATE ASSEMBLY [Avro] FROM @"/Assemblies/Avro/Avro.dll";

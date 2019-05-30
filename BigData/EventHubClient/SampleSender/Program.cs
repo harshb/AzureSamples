@@ -11,7 +11,7 @@ namespace SampleSender
     public class Program
     {
         private static EventHubClient eventHubClient;
-        private const string EventHubConnectionString = "Endpoint=sb://cloudworxpoceventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=5YmOoR6PIYvvRXVK/n2hDomkFdo+6CoL1F5RIIQDyRg=";
+        private const string EventHubConnectionString = "Endpoint=sb://cloudworxpoceventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Ajm8KjY/A13Eg7PA7ZQPCciTsyr6owc9xVixE41HmU8=";
         private const string EventHubName = "cloudworxpoceventhub";
 
         public static void Main(string[] args)

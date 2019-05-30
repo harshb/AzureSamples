@@ -2,14 +2,16 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-
-    
     "adlAnalyticsName": {
-      "defaultValue": "cloudworxpocanalytics",
+      "defaultValue": "wonderfuldatanalytics1234",
       "type": "String"
     },
     "adlStoreName": {
-      "defaultValue": "cloudworxpocadls",
+      "defaultValue": "wonderfullake1234",
+      "type": "String"
+    },
+    "location": {
+      "defaultValue": "eastus2",
       "type": "String"
     },
     "subscriptionId": {
@@ -19,22 +21,20 @@
         "description": "Subscription Id of both Data Lake Store and Event Hub namespace"
       }
     }
-    
   },
   "variables": {},
   "resources": [
-
     {
       "type": "Microsoft.DataLakeStore/accounts",
       "apiVersion": "2016-11-01",
       "name": "[parameters('adlStoreName')]",
-      "location": "eastus2",
+      "location": "[parameters('location')]",
       "properties": {}
     },
     {
       "name": "[parameters('adlAnalyticsName')]",
       "type": "Microsoft.DataLakeAnalytics/accounts",
-      "location": "eastus2",
+      "location": "[parameters('location')]",
       "apiVersion": "2016-11-01",
       "dependsOn": [
         "[concat('Microsoft.DataLakeStore/accounts/', parameters('adlStoreName'))]"
@@ -49,6 +49,5 @@
         ]
       }
     }
-   
   ]
 }
