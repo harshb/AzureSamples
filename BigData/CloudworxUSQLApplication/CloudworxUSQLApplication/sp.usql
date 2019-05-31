@@ -9,8 +9,6 @@ BEGIN
     REFERENCE ASSEMBLY [Avro];
     REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
 
-    //{Namespace}_{EventHub}_{PartitionId}/{Year}/{Month}/{Day}_{Hour}_{Minute}_{Second}
-    //namespace/year/month/timestamp.avro
 
     //These external parameters will be populated by ADF based on the time slice being executed.
     DECLARE EXTERNAL @DateSliceStart DateTime = System.DateTime.Parse("2018/01/01");
@@ -31,8 +29,7 @@ BEGIN
 
     DECLARE @output_file string = "/output/" + @YearString + "/" + @MonthString + "/" + @YearString + @MonthString + ".csv";
 
-    //DECLARE @input_file string = @"\archivefolder\{*}\{*}\{*}\{*}.avro";
-    //DECLARE @output_file string = @"/output/devicelogs.csv";
+   
 
 
     @rs =

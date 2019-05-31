@@ -1,5 +1,7 @@
-﻿//run this script
-USE DATABASE Avro;
+﻿//run this script 2 times. First as it is. Then, uncomment the "USE Database AVRO" and submit again.
+//This will then copy the assemblies in both the Master and Avro databases
+
+//USE DATABASE Avro;
 
 
 DROP ASSEMBLY IF EXISTS [Avro];
@@ -10,3 +12,4 @@ DROP ASSEMBLY IF EXISTS [Newtonsoft.Json];
 CREATE ASSEMBLY [Newtonsoft.Json] FROM @"/Assemblies/Avro/Newtonsoft.Json.dll";
 DROP ASSEMBLY IF EXISTS [log4net];
 CREATE ASSEMBLY [log4net] FROM @"/Assemblies/Avro/log4net.dll";
+
