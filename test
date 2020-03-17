@@ -1,0 +1,32 @@
+#!/bin/bash
+
+tmp_dir=$(mktemp -d -t ci-XXXXXXXXXX)
+cd $tmp_dir
+wget https://<REPO>/gremlin-2.12.17-1.noarch.rpm
+wget https://<REPO>/gremlind-2.12.17-1.noarch.rpm
+
+sudo rpm -i gremlin-2.12.17-1.noarch.rpm
+sudo rpm -i gremlind-2.12.17-1.noarch.rpm
+
+grem_pub=$(aws secretsmanager get-secret-value --secret-id=<SECRET_ID> --region <AWS_REGION> |jq --raw-output '.SecretString' | jq -r '.gremlin_pub')
+grem_priv=$(aws secretsmanager get-secret-value --secret-id=<SECRET_ID> --region <AWS_REGION> |jq --raw-output '.SecretString' | jq -r '.gremlin_priv')
+
+
+echo $grem_pub >> /var/lib/gremlin/gremlin.pub_cert.pem
+echo $grem_priv >> /var/lib/gremlin/gremlin.priv_key.pem
+
+echo 'GREMLIN_TEAM_ID="<TEAM_ID>"' >> /etc/default/gremlind
+echo 'GREMLIN_TEAM_CERTIFICATE_OR_FILE="file:///var/lib/gremlin/gremlin.pub_cert.pem"' >> /etc/default/gremlind
+echo 'GREMLIN_TEAM_PRIVATE_KEY_OR_FILE="file:///var/lib/gremlin/gremlin.priv_key.pem"' >> /etc/default/gremlind
+echo 'http_proxy="http://proxy.jpmchase.net:8443"' >> /etc/default/gremlind
+echo 'https_proxy="http://proxy.jpmchase.net:8443"' >> /etc/default/gremlind
+
+sed -i 's/\\n/\n/g' /var/lib/gremlin/gremlin.pub_cert.pem
+sed -i 's/\\n/\n/g' /var/lib/gremlin/gremlin.priv_key.pem
+
+sudo chown gremlin:gremlin /var/lib/gremlin/gremlin.p*
+sudo chmod 600 /var/lib/gremlin/gremlin.p*
+# 777 on line 26 is temporary, until we find the necessary permissions needed to make this work
+sudo chmod 777 -R /var/lib/gremlin/
+
+sudo systemctl reload gremlind
